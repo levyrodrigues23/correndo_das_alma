@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TipoAlma" format=3]
+
+[ext_resource type="Script" uid="uid://cfv81sb2o6i5k" path="res://scripts/tipo_alma.gd" id="1_tipo"]
+[ext_resource type="Texture2D" uid="uid://byrpl7q4ll44u" path="res://assets/anim-nme-ghost.png" id="2_textura"]
+
+[resource]
+script = ExtResource("1_tipo")
+nome = "O Fantasma"
+textura = ExtResource("2_textura")
+largura_quadro = 32
+altura_quadro = 32
+linha_animacao = 0
+quadros = 6
+fps = 5.0
+escala = 3.7
+voa = true
+velocidade = 80.0
+hitbox = Vector2(0.8, 0.9)

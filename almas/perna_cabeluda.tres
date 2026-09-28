@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TipoAlma" format=3]
+
+[ext_resource type="Script" uid="uid://cfv81sb2o6i5k" path="res://scripts/tipo_alma.gd" id="1_tipo"]
+[ext_resource type="Texture2D" uid="uid://i5s3up2owbic" path="res://assets/perna_cabeluda_spritesheet.png" id="2_textura"]
+
+[resource]
+script = ExtResource("1_tipo")
+nome = "A Perna Cabeluda"
+textura = ExtResource("2_textura")
+largura_quadro = 32
+altura_quadro = 32
+linha_animacao = 1
+quadros = 4
+fps = 8.0
+escala = 2.4
+voa = false
+velocidade = 170.0
+hitbox = Vector2(0.35, 0.45)

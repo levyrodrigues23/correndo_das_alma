@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TipoAlma" format=3]
+
+[ext_resource type="Script" uid="uid://cfv81sb2o6i5k" path="res://scripts/tipo_alma.gd" id="1_tipo"]
+[ext_resource type="Texture2D" uid="uid://bta1rdjxw0kvl" path="res://assets/burrinha_spritesheet.png" id="2_textura"]
+
+[resource]
+script = ExtResource("1_tipo")
+nome = "A Burrinha de Padre"
+textura = ExtResource("2_textura")
+largura_quadro = 48
+altura_quadro = 32
+linha_animacao = 1
+quadros = 4
+fps = 8.0
+escala = 2.4
+voa = false
+velocidade = 190.0
+hitbox = Vector2(0.45, 0.4)

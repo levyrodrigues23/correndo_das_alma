@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/mandacaru.gd" id="1_mandacaru"]
+[ext_resource type="Texture2D" path="res://assets/mandacaru.png" id="2_textura"]
+
+[node name="Mandacaru" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_mandacaru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_textura")
+
+[node name="Espinhos" type="CollisionShape2D" parent="."]

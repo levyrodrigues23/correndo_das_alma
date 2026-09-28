@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://yxwj317a73qv"]
+
+[ext_resource type="Script" uid="uid://buctivprptopx" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://budkkmi7vta7s" path="res://assets/cenario (2).png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cb802joslvq3t" path="res://assets/Fighter-F-01.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cqcdopwpldbku" path="res://assets/oil-lantern-pixel-art-sprite-260nw-2735550995.webp" id="6_7mycd"]
+[ext_resource type="Theme" uid="uid://bwcjve77xffd7" path="res://tema.tres" id="7_tema"]
+[ext_resource type="Script" uid="uid://edep0grnjx2k" path="res://scripts/jogador.gd" id="8_jogador"]
+[ext_resource type="Script" uid="uid://c4njbcntcaxga" path="res://scripts/lamparina.gd" id="9_lamparina"]
+[ext_resource type="Script" uid="uid://snnfsxoa1fcw" path="res://scripts/hud.gd" id="10_hud"]
+[ext_resource type="Script" uid="uid://bdpq0wegrwrex" path="res://scripts/tela_fim.gd" id="11_fim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02r7b"]
+size = Vector2(14.852802, 29.182638)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bvp3"]
+atlas = ExtResource("3_h2yge")
+region = Rect2(24, 30, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lquwl"]
+atlas = ExtResource("3_h2yge")
+region = Rect2(0, 30, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_h2yge")
+region = Rect2(24, 30, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("3_h2yge")
+region = Rect2(48, 30, 24, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xm2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bvp3")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lquwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurtbox"]
+size = Vector2(7.4, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1q7dw"]
+size = Vector2(1156, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrvnp"]
+size = Vector2(60.5, 63.5)
+
+[node name="Main" type="Node2D" unique_id=1958535736]
+script = ExtResource("1_ig7tw")
+
+[node name="cenario" type="Sprite2D" parent="." unique_id=171145085]
+position = Vector2(577.49994, 324.5)
+scale = Vector2(0.68959326, 0.6875664)
+texture = ExtResource("2_0xm2m")
+
+[node name="personagem_principal" type="CharacterBody2D" parent="." unique_id=855247755]
+position = Vector2(83.62499, 437.8024)
+scale = Vector2(3.78125, 3.1868274)
+script = ExtResource("8_jogador")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personagem_principal" unique_id=619427232]
+position = Vector2(0.3421955, 0.5326996)
+scale = Vector2(0.9999996, 0.9999998)
+shape = SubResource("RectangleShape2D_02r7b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="personagem_principal" unique_id=1485615710]
+position = Vector2(-0.42975044, 1.9447632)
+scale = Vector2(0.9999999, 0.9999998)
+sprite_frames = SubResource("SpriteFrames_0xm2m")
+animation = &"idle"
+
+[node name="Hurtbox" type="Area2D" parent="personagem_principal" unique_id=1822277308]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Forma" type="CollisionShape2D" parent="personagem_principal/Hurtbox" unique_id=503396191]
+position = Vector2(0.34, 1.5)
+shape = SubResource("RectangleShape2D_hurtbox")
+
+[node name="chao" type="StaticBody2D" parent="." unique_id=286450178]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao" unique_id=1614149676]
+position = Vector2(576, 501)
+shape = SubResource("RectangleShape2D_1q7dw")
+
+[node name="luz" type="Area2D" parent="." unique_id=2076621967]
+script = ExtResource("9_lamparina")
+
+[node name="Sprite2D" type="Sprite2D" parent="luz" unique_id=381996212]
+position = Vector2(274, 441.00003)
+scale = Vector2(0.45675677, 0.40957448)
+texture = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="luz" unique_id=1581583497]
+position = Vector2(273.75, 442.25)
+shape = SubResource("RectangleShape2D_rrvnp")
+
+[node name="Amanhecer" type="CanvasModulate" parent="." unique_id=1348474349]
+color = Color(0.7, 0.75, 1, 1)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=719422565]
+script = ExtResource("10_hud")
+
+[node name="Painel" type="PanelContainer" parent="HUD" unique_id=2020897285]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 126.0
+theme = ExtResource("7_tema")
+
+[node name="Linhas" type="VBoxContainer" parent="HUD/Painel" unique_id=1741965374]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Vidas" type="Label" parent="HUD/Painel/Linhas" unique_id=2146045210]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9271152, 0.9399557, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Vidas: ❤️❤️❤️"
+
+[node name="Tempo" type="Label" parent="HUD/Painel/Linhas" unique_id=1296723217]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92269427, 0.94164634, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Amanhecer em 01:30"
+
+[node name="Progresso" type="ProgressBar" parent="HUD/Painel/Linhas" unique_id=1915464516]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+show_percentage = false
+
+[node name="Aviso" type="Label" parent="HUD" unique_id=639754864]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 24.0
+offset_right = 300.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme = ExtResource("7_tema")
+theme_override_colors/font_color = Color(0.75, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Outra alma chegou!"
+horizontal_alignment = 1
+
+[node name="Fim" type="CanvasLayer" parent="." unique_id=1935310625]
+layer = 2
+visible = false
+script = ExtResource("11_fim")
+
+[node name="Escurecer" type="ColorRect" parent="Fim" unique_id=1766343798]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Painel" type="PanelContainer" parent="Fim" unique_id=800506019]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -150.0
+offset_right = 260.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_tema")
+
+[node name="Linhas" type="VBoxContainer" parent="Fim/Painel" unique_id=200578791]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Fim/Painel/Linhas" unique_id=174355329]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.5, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 52
+text = "AMANHECEU!"
+horizontal_alignment = 1
+
+[node name="Mensagem" type="Label" parent="Fim/Painel/Linhas" unique_id=1202475613]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "O sol nasceu e as almas foram embora."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="JogarDeNovo" type="Button" parent="Fim/Painel/Linhas" unique_id=269509800]
+custom_minimum_size = Vector2(260, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Jogar de novo"
+
+[node name="Menu" type="Button" parent="Fim/Painel/Linhas" unique_id=1812105007]
+custom_minimum_size = Vector2(260, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Menu"
+
+[connection signal="pressed" from="Fim/Painel/Linhas/JogarDeNovo" to="Fim" method="_on_jogar_de_novo_pressed"]
+[connection signal="pressed" from="Fim/Painel/Linhas/Menu" to="Fim" method="_on_menu_pressed"]

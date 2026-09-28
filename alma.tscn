@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ddqpu83lfrans"]
+
+[ext_resource type="Script" uid="uid://dn7j1fwcmgesa" path="res://scripts/alma.gd" id="1_alma"]
+
+[node name="Alma" type="Node2D" unique_id=104532208]
+script = ExtResource("1_alma")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1297878876]
+texture_filter = 1
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=268437377]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Forma" type="CollisionShape2D" parent="Hitbox" unique_id=1474763180]
